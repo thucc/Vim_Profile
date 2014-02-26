@@ -12,8 +12,7 @@ set co=165
 set cuc
 set ts=4
 
-colorscheme desert
-
+colorscheme ron
 set tags=tags 
 set autochdir
 
@@ -27,3 +26,5 @@ nmap wm :WMToggle<cr>
 
 nmap be :BufExplorer<cr>
 
+nmap :sp :split<cr>
+nmap :vsp :vsplit<cr>
