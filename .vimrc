@@ -1,20 +1,64 @@
-syntax enable
-syntax on
+"===========================================基本设置===========================================
+filetype on									"打开文件类型
+filetype plugin indent on 
+
+syntax on									"打开语法检查
+syntax enable								"打开语法功能
+
+set autochdir								"自动切换文件所在目录为当前目录
 
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 
-set nu
-set hlsearch
-set ic
-set lines=52
+set nu										"每行显示行号
+set ruler									"打开状态栏标尺
+set cuc										"光标所在当前列高亮
+set cul										"光标所在行高亮
+
+set hlsearch								"高亮搜索匹配项
+set incsearch								"快速搜索
+set ic										"搜索忽略大小写
+
+set lines=52								"设置窗口大小
 set co=165
-set cuc
-set ts=4
+
+set autoindent								"设置自动缩进
+set ts=4									"TAB宽度
+set shiftwidth=4							"自动缩进长度为4
+
+set nobackup								"取消自动备份
+set mouse=a									"启用鼠标
+
+set showmatch								"括号自动匹配
+"括号引号自动补全
+:inoremap ( ()<esc>i
+:inoremap ) <c-r>=ClosePair(')')<cr>
+:inoremap { {<cr>}<esc>O<tab>
+:inoremap } <c-r>=ClosePair('}')<cr>
+:inoremap [ []<esc>i
+:inoremap ] <c-r>=ClosePair(']')<cr>
+:inoremap " ""<esc>i
+:inoremap ' ''<esc>i
+function! ClosePair(char)
+		if getline('.')[col('.') - 1] == a:char
+				return "\<right>"
+		else
+				return a:char
+		endif
+endfunction   #自动补全括号
+
+"在不同窗口间移动
+map <C-J> <C-W>j							
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+"打开新窗口快捷键
+nmap :sp :split<cr>
+nmap :vsp :vsplit<cr>
 
 colorscheme ron
-set tags=tags 
-set autochdir
+"===========================================插件设置===========================================
+set tags+=tags 								"在当前目录寻找tags,否则到上层目录寻找
 
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
@@ -25,6 +69,3 @@ let g:winManagerWindowLayout='FileExplorer'
 nmap wm :WMToggle<cr>
 
 nmap be :BufExplorer<cr>
-
-nmap :sp :split<cr>
-nmap :vsp :vsplit<cr>

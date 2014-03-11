@@ -1,9 +1,10 @@
-Vim_Profile
+Vim
 ===========
 
 This repository contains the vim plugins and configure files in a linux environment.
 
 You can follow the following steps to make vim a better editor for matlab:(referenced:http://www.vim.org/scripts/script.php?script_id=2407)
+
  	1) Syntax highlighting 
  	Copy syntax/matlab.vim to your $HOME/vimfiles/syntax directory 
  	
