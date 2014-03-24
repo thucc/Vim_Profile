@@ -1,6 +1,7 @@
 "===========================================基本设置===========================================
 filetype on									"打开文件类型
-filetype plugin indent on 
+filetype indent on 
+filetype plugin on 
 
 syntax on									"打开语法检查
 syntax enable								"打开语法功能
@@ -69,3 +70,9 @@ let g:winManagerWindowLayout='FileExplorer'
 nmap wm :WMToggle<cr>
 
 nmap be :BufExplorer<cr>
+"===========================================matlab设置=========================================
+source $VIMRUNTIME/macros/matchit.vim
+autocmd BufEnter *.m    compiler mlint
+"===========================================latex设置==========================================
+let g:tex_flavor='latex'					"打开空的tex文件时默认为latex类型而不是tex类型
+
