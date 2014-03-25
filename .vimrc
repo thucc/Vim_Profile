@@ -1,7 +1,7 @@
 "===========================================基本设置===========================================
 filetype on									"打开文件类型
-filetype indent on 
-filetype plugin on 
+filetype indent on							"根据文件类型缩进
+filetype plugin on 							"根据文件类型加载插件
 
 syntax on									"打开语法检查
 syntax enable								"打开语法功能
@@ -49,10 +49,10 @@ function! ClosePair(char)
 endfunction   #自动补全括号
 
 "在不同窗口间移动
-map <C-J> <C-W>j							
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-H> <C-W>h
+nmap <C-L> <C-W>l
 "打开新窗口快捷键
 nmap :sp :split<cr>
 nmap :vsp :vsplit<cr>
