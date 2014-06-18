@@ -26,6 +26,7 @@ set co=165
 set autoindent								"设置自动缩进
 set ts=4									"TAB宽度
 set shiftwidth=4							"自动缩进长度为4
+set expandtab								"把TAB替换成空格
 
 set nobackup								"取消自动备份
 set mouse=a									"启用鼠标
@@ -56,6 +57,8 @@ nmap <C-L> <C-W>l
 "打开新窗口快捷键
 nmap :sp :split<cr>
 nmap :vsp :vsplit<cr>
+"用;代替;，可以少按一次shift
+nmap ; :
 
 colorscheme ron
 "===========================================插件设置===========================================

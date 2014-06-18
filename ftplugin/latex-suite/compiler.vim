@@ -390,9 +390,12 @@ function! Tex_ForwardSearchLaTeX()
 
 				let execString = 'silent! !'.viewer.' -name xdvi -sourceposition "'.line('.').' '.expand("%").'" '.mainfnameRoot.'.dvi'
 
-			elseif viewer =~ '^ *okular'
-
-				let execString = 'silent! !'.viewer.' --unique '.mainfnameRoot.'.'.s:target.'\#src:'.line('.').expand("%:p")
+"			elseif viewer =~ '^ *okular'
+"
+"				let execString = 'silent! !'.viewer.' --unique '.mainfnameRoot.'.'.s:target.'\#src:'.line('.').expand("%:p")
+            elseif (viewer == "okular")
+                 
+                let execString = 'silent! !okular --unique '.mainfnameRoot.'.pdf\#src:'.line('.').expand("%")
 
 			endif
 

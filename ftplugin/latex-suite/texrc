@@ -86,7 +86,7 @@ TexLet g:Tex_DebugLog = ''
 if has('macunix')
 	TexLet g:Tex_DefaultTargetFormat = 'pdf'
 else
-	TexLet g:Tex_DefaultTargetFormat = 'dvi'
+	TexLet g:Tex_DefaultTargetFormat = 'pdf'
 endif
 
 " A comma seperated list of formats which need multiple compilations to be
@@ -112,7 +112,8 @@ TexLet g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
 " ways to generate pdf files. there are soo many...
 " NOTE: pdflatex generates the same output as latex. therefore quickfix is
 "       possible.
-TexLet g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode -file-line-error-style $*'
+"TexLet g:Tex_CompileRule_pdf = 'pdflatex -interaction=nonstopmode -file-line-error-style $*'
+TexLet g:Tex_CompileRule_pdf = 'xelatex --src-specials -synctex=1 -interaction=nonstopmode $*'
 
 " TexLet g:Tex_CompileRule_pdf = 'ps2pdf $*.ps'
 " TexLet g:Tex_CompileRule_pdf = 'dvipdfm $*.dvi'
@@ -124,7 +125,8 @@ TexLet g:Tex_CompileRule_bib = g:Tex_BibtexFlavor . ' $*'
 
 " Set Tex_UseMakefile to 0 if you want to ignore the presence of a Makefile 
 " when deciding how to compile
-TexLet g:Tex_UseMakefile = 1
+"TexLet g:Tex_UseMakefile = 1    "if exists a makefile under the file,\ll exeucate makefile rather than compile instructions
+TexLet g:Tex_UseMakefile = 0
 
 " }}}
 " ------------------------------------------------------------------------------ 
@@ -150,18 +152,19 @@ elseif has('macunix')
 	" TexLet g:Tex_TreatMacViewerAsUNIX = 1
 else
 	if executable('xdg-open')
-		TexLet g:Tex_ViewRule_ps = 'xdg-open'
-		TexLet g:Tex_ViewRule_pdf = 'xdg-open'
-		TexLet g:Tex_ViewRule_dvi = 'xdg-open'
+		TexLet g:Tex_ViewRule_ps = 'okular'
+		TexLet g:Tex_ViewRule_pdf = 'okular'
+		TexLet g:Tex_ViewRule_dvi = 'okular'
 	else
-		TexLet g:Tex_ViewRule_ps = 'gv'
-		TexLet g:Tex_ViewRule_pdf = 'xpdf'
-		TexLet g:Tex_ViewRule_dvi = 'xdvi'
+		TexLet g:Tex_ViewRule_ps = 'okular'
+		TexLet g:Tex_ViewRule_pdf = 'okular'
+		TexLet g:Tex_ViewRule_dvi = 'okular'
 	endif
 	" the option below specifies an editor for the dvi viewer while starting
 	" up the dvi viewer according to Dimitri Antoniou's tip on vim.sf.net (tip
 	" #225)
-	TexLet g:Tex_UseEditorSettingInDVIViewer = 0
+"	TexLet g:Tex_UseEditorSettingInDVIViewer = 0
+	TexLet g:Tex_UseEditorSettingInDVIViewer = 1
 endif
 " For unix systems or macunix systens with enabled Tex_TreatMacViewerAsUNIX:
 " Set this to 1 if you do not want to execute the viewer in the background
