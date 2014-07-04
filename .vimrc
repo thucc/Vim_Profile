@@ -78,4 +78,19 @@ source $VIMRUNTIME/macros/matchit.vim
 autocmd BufEnter *.m    compiler mlint
 "===========================================latex设置==========================================
 let g:tex_flavor='latex'					"打开空的tex文件时默认为latex类型而不是tex类型
-
+"===========================================C/C++设置==========================================
+"configure tags - add additional tags here or comment out not-used ones
+set tags+=~/.vim/tags/cpp_src/tags-cpp
+"build tags of your own project with CTRL+F12
+map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+"关掉补全项目的预览窗口
+set completeopt=menu
