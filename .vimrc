@@ -1,4 +1,6 @@
 "===========================================基本设置===========================================
+set nocompatible                            "去掉有关vi的一致性模式
+set backspace=start,eol
 filetype on									"打开文件类型
 filetype indent on							"根据文件类型缩进
 filetype plugin on 							"根据文件类型加载插件

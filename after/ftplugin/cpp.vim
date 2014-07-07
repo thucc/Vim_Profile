@@ -1,4 +1,4 @@
 " OmniCppComplete initialization
 call omni#cpp#complete#Init()
-map <F5> <ESC>:w<CR>:!make<CR>
-
+map <F5> <ESC>:w<CR>:make<CR>
+run macros/gdb_mappings.vim

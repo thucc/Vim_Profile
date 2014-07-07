@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/czc/.vim'
+let g:netrw_dirhist_2='/home/czc/Documents/PPT_Mid_Summary/.git'
+let g:netrw_dirhist_3='/home/czc/Documents/Matlab_Files/Reconstruct_Image_Based_On_ARC/tilting_grid_design'
+let g:netrw_dirhist_4='/home/czc/Documents/Matlab_Files/Code_SR/test'
