@@ -22,8 +22,8 @@ set hlsearch								"高亮搜索匹配项
 set incsearch								"快速搜索
 set ic										"搜索忽略大小写
 
-set lines=52								"设置窗口大小
-set co=165
+"set lines=52								"设置窗口大小
+"set co=165
 
 set autoindent								"设置自动缩进
 set ts=4									"TAB宽度
@@ -66,6 +66,7 @@ colorscheme ron
 "===========================================插件设置===========================================
 set tags+=tags 								"在当前目录寻找tags,否则到上层目录寻找
 
+let Tlist_Ctags_Cmd = "/usr/local/ctags/bin/ctags"
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=1
