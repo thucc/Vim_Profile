@@ -144,7 +144,8 @@ if has('win32')
 elseif has('macunix')
 	" Let the system pick.  If you want, you can override the choice here.
 	TexLet g:Tex_ViewRule_ps = ''
-	TexLet g:Tex_ViewRule_pdf = ''
+	" TexLet g:Tex_ViewRule_pdf = ''
+	 TexLet g:Tex_ViewRule_pdf = 'evince'
 	" TexLet g:Tex_ViewRule_pdf = 'Acrobat\ Reader\ 5.1'
 	TexLet g:Tex_ViewRule_dvi = ''
 	" Set this to 1 to disable opening a viewer with 'open -a'
@@ -153,11 +154,11 @@ elseif has('macunix')
 else
 	if executable('xdg-open')
 		TexLet g:Tex_ViewRule_ps = 'okular'
-		TexLet g:Tex_ViewRule_pdf = 'okular'
+		TexLet g:Tex_ViewRule_pdf = 'evince'
 		TexLet g:Tex_ViewRule_dvi = 'okular'
 	else
 		TexLet g:Tex_ViewRule_ps = 'okular'
-		TexLet g:Tex_ViewRule_pdf = 'okular'
+		TexLet g:Tex_ViewRule_pdf = 'evince'
 		TexLet g:Tex_ViewRule_dvi = 'okular'
 	endif
 	" the option below specifies an editor for the dvi viewer while starting

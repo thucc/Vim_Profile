@@ -1,4 +1,4 @@
-*gdb.txt*    For Vim version 7.2.     Last change: 2008 October 13
+*gdb.txt*    For Vim version 7.3.     Last change: 2010 November 14
 
 
 			     VIM REFERENCE MANUAL

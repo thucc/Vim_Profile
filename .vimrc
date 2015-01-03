@@ -29,27 +29,35 @@ set autoindent								"设置自动缩进
 set ts=4									"TAB宽度
 set shiftwidth=4							"自动缩进长度为4
 set expandtab								"把TAB替换成空格
+set smartindent
+set softtabstop=4
 
 set nobackup								"取消自动备份
-set mouse=a									"启用鼠标
+set mouse=a			    					"启用鼠标
+
+set statusline=[%F]%y                       "显示文件全名，文件类型
+set statusline+=%=[%{&ff}]                  "显示文件格式(DOS,Unix)
+set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"} "显示编码格式
+set statusline+=[Line=%l/%L][Column=%c][%p%%] "显示行列数
+set laststatus=2
 
 set showmatch								"括号自动匹配
 "括号引号自动补全
-:inoremap ( ()<esc>i
-:inoremap ) <c-r>=ClosePair(')')<cr>
-:inoremap { {<cr>}<esc>O<tab>
-:inoremap } <c-r>=ClosePair('}')<cr>
-:inoremap [ []<esc>i
-:inoremap ] <c-r>=ClosePair(']')<cr>
-:inoremap " ""<esc>i
-:inoremap ' ''<esc>i
-function! ClosePair(char)
-		if getline('.')[col('.') - 1] == a:char
-				return "\<right>"
-		else
-				return a:char
-		endif
-endfunction   #自动补全括号
+":inoremap ( ()<esc>i
+":inoremap ) <c-r>=ClosePair(')')<cr>
+":inoremap { {<cr>}<esc>O<tab>
+":inoremap } <c-r>=ClosePair('}')<cr>
+":inoremap [ []<esc>i
+":inoremap ] <c-r>=ClosePair(']')<cr>
+":inoremap " ""<esc>i
+":inoremap ' ''<esc>i
+"function! ClosePair(char)
+"		if getline('.')[col('.') - 1] == a:char
+"				return "\<right>"
+"		else
+"				return a:char
+"		endif
+"endfunction   #自动补全括号
 
 "在不同窗口间移动
 nmap <C-J> <C-W>j
@@ -95,5 +103,11 @@ let OmniCpp_MayCompleteDot = 1 " autocomplete after .
 let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
 "关掉补全项目的预览窗口
 set completeopt=menu
+
+"===========================================python设置=========================================

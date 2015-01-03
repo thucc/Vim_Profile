@@ -7,13 +7,35 @@ if ! has("gdb")
 endif
 
 let s:gdb_k = 1
-nmap <F7> :call <SID>Toggle()<CR>
+function! ToggleGDB()
+    if getwinvar(0,'&statusline') != ""
+        :set autochdir
+        :cd %:p:h
+        :only
+        set statusline=
+        :call <SID>Toggle()
+    else
+        set statusline+=%F%m%r%h%w\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L]\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]
+        :set noautochdir
+        :call <SID>Toggle()
+    endif
+endfunction
+
+function! SToggleGDB()
+    :MiniBufExplorer
+    set statusline+=%F%m%r%h%w\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L]\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]
+    :call <SID>Toggle()
+endfunction
+nmap <F7>  :call ToggleGDB()<cr>
+nmap <S-F7>  :call <SID>Toggle()<cr>
+
+" nmap <S-F7>  :call SToggleGDB()<cr>
+" nmap <F7>  :call <SID>Toggle()<CR>
 
 " Toggle between vim default and custom mappings
 function! s:Toggle()
     if s:gdb_k
 	let s:gdb_k = 0
-
 	map <Space> :call gdb("")<CR>
 	nmap <silent> <C-Z> :call gdb("\032")<CR>
 
@@ -100,4 +122,5 @@ endfunction
 
 " map vimGdb keys
 "call s:Toggle()
+
 

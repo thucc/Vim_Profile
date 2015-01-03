@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/czc/.vim'
 let g:netrw_dirhist_2='/home/czc/Documents/PPT_Mid_Summary/.git'
 let g:netrw_dirhist_3='/home/czc/Documents/Matlab_Files/Reconstruct_Image_Based_On_ARC/tilting_grid_design'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/home/czc/Documents/Matlab_Files/genereate_figures'
 let g:netrw_dirhist_6='/home/czc/Documents/Matlab_Files/Reconstruct_Image_Based_On_ARC/xie_mode_restoration'
 let g:netrw_dirhist_7='/home/czc-deepin/Documents/Latex_Files/Reaserch_On_MTF'
 let g:netrw_dirhist_8='/home/czc-deepin/Documents/Latex_Files/test'
+let g:netrw_dirhist_9='/home/czc-deepin/Documents/C/Qt/GetCursorPos/sources'
