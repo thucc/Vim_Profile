@@ -1,48 +1,48 @@
-"===========================================基本设置===========================================
-set nocompatible                            "去掉有关vi的一致性模式
+"===========================================basic settings=====================
+set nocompatible                            "disable compatible model
 set backspace=start,eol
-filetype on									"打开文件类型
-filetype indent on							"根据文件类型缩进
-filetype plugin on 							"根据文件类型加载插件
+filetype on									"enable file type dectection
+filetype indent on							"indent according to file type
+filetype plugin on 							"load plugin according to file type
 
-syntax on									"打开语法检查
-syntax enable								"打开语法功能
+syntax on									"enable grammar check
+syntax enable								"enable grammar
 
-set autochdir								"自动切换文件所在目录为当前目录
+set autochdir								"automaticlly change directory
 
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 
-set nu										"每行显示行号
-set ruler									"打开状态栏标尺
-set cuc										"光标所在当前列高亮
-set cul										"光标所在行高亮
+set nu										"display row number
+set ruler									"enable ruler of status bar
+set cuc										"highlight current column
+set cul										"highlight current row
 
-set hlsearch								"高亮搜索匹配项
-set incsearch								"快速搜索
-set ic										"搜索忽略大小写
+set hlsearch								"highlight serach
+set incsearch								"quick search
+set ic										"ignore case
 
-"set lines=52								"设置窗口大小
+"set lines=52								"set window size
 "set co=165
 
-set autoindent								"设置自动缩进
-set ts=4									"TAB宽度
-set shiftwidth=4							"自动缩进长度为4
-set expandtab								"把TAB替换成空格
+set autoindent								"automatic indent
+set ts=4									"tab width
+set shiftwidth=4							"auto tab width is 4
+set expandtab								"replace tab with space
 set smartindent
 set softtabstop=4
 
-set nobackup								"取消自动备份
-set mouse=a			    					"启用鼠标
+set nobackup								"disable automaticlly back up
+set mouse=a			    					"enable mouse
 
-set statusline=[%F]%y                       "显示文件全名，文件类型
-set statusline+=%=[%{&ff}]                  "显示文件格式(DOS,Unix)
-set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"} "显示编码格式
-set statusline+=[Line=%l/%L][Column=%c][%p%%] "显示行列数
+set statusline=[%F]%y                       "show file name,file type
+set statusline+=%=[%{&ff}]                  "show file format(DOS,Unix)
+set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"} "show encoding
+set statusline+=[Line=%l/%L][Column=%c][%p%%] "show row and column number
 set laststatus=2
 
-set showmatch								"括号自动匹配
-"括号引号自动补全
+set showmatch								"brackets match
+"automaticlly complete brackets and quotation
 ":inoremap ( ()<esc>i
 ":inoremap ) <c-r>=ClosePair(')')<cr>
 ":inoremap { {<cr>}<esc>O<tab>
@@ -57,26 +57,27 @@ set showmatch								"括号自动匹配
 "		else
 "				return a:char
 "		endif
-"endfunction   #自动补全括号
+"endfunction
 
-"在不同窗口间移动
+"move between different windows
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 nmap <C-H> <C-W>h
 nmap <C-L> <C-W>l
-"打开新窗口快捷键
+"hot key for opening new window
 nmap :sp :split<cr>
 nmap :vsp :vsplit<cr>
-"用;代替;，可以少按一次shift
+"replace : with ;
 nmap ; :
 
-"在可视模式时，输出ctrl+c和ctrl+v实现复制粘贴。复制粘贴内容可以和其它程序公用
+"in visual mode,ctrl+c and ctrl+v are used to copy and paste,also compatible
+"with other programs
 vmap <C-C> "+y
 vmap <C-V> "+p
 
 colorscheme ron
-"===========================================插件设置===========================================
-set tags+=tags 								"在当前目录寻找tags,否则到上层目录寻找
+"===========================================flugin setting=====================
+set tags+=tags 	"search tag under current directory,if not found,go to upper directory
 
 let Tlist_Ctags_Cmd = "/usr/local/ctags/bin/ctags"
 let Tlist_Show_One_File=1
@@ -88,12 +89,12 @@ let g:winManagerWindowLayout='FileExplorer'
 nmap wm :WMToggle<cr>
 
 nmap be :BufExplorer<cr>
-"===========================================matlab设置=========================================
+"===========================================matlab setting======================
 source $VIMRUNTIME/macros/matchit.vim
 autocmd BufEnter *.m    compiler mlint
-"===========================================latex设置==========================================
-let g:tex_flavor='latex'					"打开空的tex文件时默认为latex类型而不是tex类型
-"===========================================C/C++设置==========================================
+"===========================================latex setting=======================
+let g:tex_flavor='latex'
+"===========================================C/C++ setting=======================
 "configure tags - add additional tags here or comment out not-used ones
 set tags+=~/.vim/tags/cpp_src/tags-cpp
 "build tags of your own project with CTRL+F12
@@ -111,7 +112,7 @@ let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
-"关掉补全项目的预览窗口
+"disable preview window of completion
 set completeopt=menu
 
-"===========================================python设置=========================================
+"===========================================python setting======================
