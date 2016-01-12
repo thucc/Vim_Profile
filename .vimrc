@@ -78,8 +78,11 @@ vmap <C-V> "+p
 colorscheme ron
 "===========================================flugin setting=====================
 set tags+=tags 	"search tag under current directory,if not found,go to upper directory
-
-let Tlist_Ctags_Cmd = "/usr/local/ctags/bin/ctags"
+if has("win32")
+  let Tlist_Ctags_Cmd="ctags"
+else
+  let Tlist_Ctags_Cmd="/usr/bin/ctags"
+endif
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=1
@@ -115,4 +118,40 @@ autocmd QuickFixCmdPost    l* nested lwindow
 "disable preview window of completion
 set completeopt=menu
 
-"===========================================python setting======================
+"===========================================windows setting=====================
+if has("win32")
+  source $VIMRUNTIME/vimrc_example.vim
+  source $VIMRUNTIME/mswin.vim
+  source $VIMRUNTIME/delmenu.vim
+  source $VIMRUNTIME/menu.vim
+  language messages zh_CN.utf-8
+  behave mswin
+
+  au GUIEnter * call libcallnr ( "vimtweak.dll" , "SetAlpha" , 200)
+  au GUIEnter * simalt ~x
+
+  set diffexpr=MyDiff()
+  function MyDiff()
+    let opt = '-a --binary '
+    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+    let arg1 = v:fname_in
+    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+    let arg2 = v:fname_new
+    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+    let arg3 = v:fname_out
+    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+    let eq = ''
+    if $VIMRUNTIME =~ ' '
+      if &sh =~ '\<cmd'
+        let cmd = '""' . $VIMRUNTIME . '\diff"'
+        let eq = '"'
+      else
+        let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+      endif
+    else
+      let cmd = $VIMRUNTIME . '\diff'
+    endif
+    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+  endfunction
+ endif
